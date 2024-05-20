@@ -245,3 +245,107 @@ Administrator clicks the "Logs" button.
 
 - Result:
 System displays the system logs to the administrator.
+
+
+## REST API Endpoints
+### For User or Administrator
+#### 1. Registration
+- Method: POST
+- Endpoint: /registration
+- Parameters:
+-- firstname: first name (required)
+-- lastname: last name (required)
+-- email: email address (required, unique)
+-- password: password (required)
+#### 2. Login
+- Method: POST
+- Endpoint: /login
+- Parameters:
+-- email: email address (required)
+-- password: password (required)
+#### 3. Forgot Password
+- Method: POST
+- Endpoint: /forgot-password
+- Parameters:
+-- email: email address (required)
+#### 4. Update Profile
+- Method: PUT
+- Endpoint: /users/{user_id}
+- Parameters:
+-- user_id: ID of the user to update (required)
+-- firstname: first name (optional)
+-- lastname: last name (optional)
+-- email: email address (optional)
+-- password: password (optional)
+
+### For User
+### 5. View Another User Information
+- Method: GET
+- Endpoint: /users/{user_id}
+- Parameters:
+-- user_id: ID of the user to get information for (required)
+#### 6. Translate Text
+- Method: POST
+- Endpoint: /translate-
+- Parameters:
+-- text: Text to translate (required)
+-- from_language: Language to translate from (required)
+-- to_language: Language to translate to (required)
+#### 7. Suggest Translation Correction
+- Method: POST
+- Endpoint: /translations/{translation_id}/corrections
+- Parameters:
+-- translation_id: ID of the translation to suggest a correction for (required)
+-- suggested_translation: Suggested correction for the translation (required)
+#### 8. Get Translation History
+- Method: GET
+- Endpoint: /users/{user_id}/translations
+- Parameters:
+-- user_id: ID of the user to get translation history for (required)
+#### 9. Change Language Settings
+- Method: PUT
+- Endpoint: /users/{user_id}/settings
+- Parameters:
+-- user_id: ID of the user to change language settings for (required)
+-- default_language: User's default language (required)
+#### 10. Provide Feedback
+- Method: POST
+- Endpoint: /feedback
+- Parameters:
+-- feedback: User's feedback (required)
+
+### For Administrator
+#### 1. Add New Word Translation
+- Method: POST
+- Endpoint: /translations
+-  Parameters:
+-- word: Word to translate (required)
+-- from_language: Language to translate from (required)
+-- to_language: Language to translate to (required)
+-- translation: Translation of the word (required)
+#### 2. Edit Existing Word Translation
+- Method: PUT
+- Endpoint: /translations/{translation_id}
+- Parameters:
+-- translation_id: ID of the translation to edit (required)
+-- word: Word to translate (optional)
+-- from_language: Language to translate from (optional)
+-- to_language: Language to translate to (optional)
+-- translation: Translation of the word (optional)
+#### 3. Delete Word Translation
+- Method: DELETE
+- Endpoint: /translations/{translation_id}
+- Parameters:
+-- translation_id: ID of the translation to delete (required)
+#### 4. Add New Dictionary
+- Method: POST
+- Endpoint: /dictionaries
+- Parameters:
+name: Name of the dictionary (required)
+language: Language of the dictionary (required)
+#### 5. Edit Existing Dictionary
+- Method: PUT
+- Endpoint: /dictionaries/{dictionary_id}
+- Parameters:
+--dictionary_id: ID of the dictionary to edit (required)
+--name: Name of the dictionary (optional)
